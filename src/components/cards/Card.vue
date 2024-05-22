@@ -34,7 +34,7 @@ onMounted(() => {
     <img
       :src="currentPokemon.sprites.other.home.front_default"
       alt="Pokemon Image"
-      class="pokemon-image h-64 w-64 absolute -top-12 left-20 z-10"
+      class="pokemon-image h-64 w-64 absolute -top-10 left-20 z-10"
     />
     <div
       class="card rounded-3xl flex flex-col items-center gap-4 text-white bg-black bg-opacity-15 pt-20 border-2 mt-40 border-slate-200/15 relative overflow-hidden"

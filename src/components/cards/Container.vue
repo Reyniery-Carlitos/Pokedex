@@ -203,7 +203,7 @@ function previous() {
       </div>
     </div>
 
-    <div class="w-full h-auto grid grid-cols-3 gap-8 self-center mb-5" v-else>
+    <div class="w-full h-auto grid grid-cols-3 gap-8 self-center mb-5" v-else-if="loading">
       <Skeleton v-for="i in 3" :key="i" />
     </div>
   </div>
