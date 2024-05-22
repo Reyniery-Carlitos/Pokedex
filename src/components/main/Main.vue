@@ -21,7 +21,7 @@ function selectPokemon(val: number) {
   <main
     class="main-container h-[750px] w-full flex flex-col items-center relative overflow-hidden pb-24"
     v-if="pokemonSelectedById"
-    :style="{'background': `linear-gradient(360deg, ${types[pokemonSelectedById.types[0].type.name].from} 0%, ${types[pokemonSelectedById.types[0].type.name].from} 100%)`}"
+    :style="{'background': `linear-gradient(360deg, ${types[pokemonSelectedById.types[0].type.name].from} 0%, ${types[pokemonSelectedById.types[0].type.name].to} 100%)`}"
   >
     <Header class="w-4/6 h-28 flex items-center" />
 
@@ -41,7 +41,7 @@ function selectPokemon(val: number) {
       class="h-12 w-12 top-[calc(50%+24px)] right-10 absolute cursor-pointer z-10"
       @click="selectPokemon(1)"
     />
-    <img src="/src/assets/waves.svg" class="absolute -bottom-[400px]" />
+    <!-- <img src="/src/assets/waves.svg" class="absolute -bottom-[400px]" /> -->
   </main>
 </template>
 
