@@ -9,7 +9,7 @@ const usePokemon = defineStore("pokemon", () => {
   const pokemonSelectedById: Ref<IPokemon | null> = ref(null);
   const pokemonList: Ref<IPokemonList | null> = ref(null);
   const loading: Ref<boolean> = ref(false)
-  const loadingPokemonId: Ref<boolean> = ref<false>
+  const loadingPokemonId: Ref<boolean> = ref(false)
 
 
   async function selectPokemonById(id: number = 1) {
