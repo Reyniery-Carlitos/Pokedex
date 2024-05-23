@@ -6,9 +6,16 @@ import { types } from "../../consts/pokeTypes";
 
 import usePokemon from "../../stores/pokemon";
 import { storeToRefs } from "pinia";
+// import useModal from "../../stores/modal";
 
 const pokemonStore = usePokemon();
+// const modalStore = useModal()
 const { pokemonSelectedById } = storeToRefs(pokemonStore);
+
+function toggleModal() {
+  // modalStore.toggleModal()
+}
+
 </script>
 
 <template>
@@ -38,6 +45,7 @@ const { pokemonSelectedById } = storeToRefs(pokemonStore);
       
       <button
         class="details-button flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md"
+        @click="toggleModal"
       >
         <Electric color="#000" />
         More Details

@@ -12,7 +12,7 @@ defineProps<{
     viewBox="0 0 48 48"
   >
     <g
-      fill="none"
+      fill="#000"
       :stroke="color"
       stroke-linejoin="round"
       stroke-miterlimit="2"
