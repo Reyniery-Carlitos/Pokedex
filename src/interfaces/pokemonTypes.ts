@@ -6,6 +6,18 @@ export interface IType {
   }
 }
 
+export interface ITypes {
+  count: number
+  next: string
+  previous: any
+  results: Result[]
+}
+
+export interface Result {
+  name: string
+  url: string
+}
+
 export interface IParamsModal {
   id?: number,
   url?: string,

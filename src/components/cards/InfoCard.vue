@@ -26,7 +26,7 @@ defineProps<{
       ></div>
 
       <span class="text-xl font-bold text-white z-10"> #{{ data.id }} </span>
-      <h1 class="text-3xl font-bold text-white z-10">{{ data.name }}</h1>
+      <h1 class="px-4 text-3xl font-bold text-white z-10">{{ data.name }}</h1>
       <div class="flex gap-2 z-10">
         <button
           class="flex gap-2 py-1 px-3 bg-[#ff9801] text-white rounded-lg"

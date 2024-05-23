@@ -1,4 +1,5 @@
-import { IPokemon, IPokemonList } from "../interfaces/pokemonTypes";
+import { IPokemonsByType } from "../interfaces/pokemonListByTypes";
+import { IPokemon, IPokemonList, ITypes } from "../interfaces/pokemonTypes";
 
 export default class Pokemon {
   async getPokemonById(id: number): Promise<IPokemon | null> {
@@ -40,7 +41,6 @@ export default class Pokemon {
       const data = await response.json();
 
       pokemonList = data;
-      console.log(pokemonList)
     } catch (err) {
       console.error(err);
     }
@@ -62,7 +62,17 @@ export default class Pokemon {
     return currentPokemon
   }
 
-  async getTypes() {
-      
+  async getTypes(): Promise<ITypes | null> {
+    const response = await fetch('https://pokeapi.co/api/v2/type/')
+    const data = await response.json()
+
+    return data
+  }
+
+  async getPokemonesByTypes(name: string): Promise<IPokemonsByType | null> {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${name}`)
+    const data = await response.json()
+
+    return data
   }
 }

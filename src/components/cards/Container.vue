@@ -9,9 +9,12 @@ import RightArrow from "../icons/RightArrow.vue";
 import Skeleton from "./Skeleton.vue";
 import Search from "../filters/Search.vue";
 import Start from "../filters/Start.vue";
+import Types from "../filters/Types.vue";
+import Plus from "../icons/Plus.vue";
+import ArrowUp from "../icons/ArrowUp.vue";
 
 const pokemonStore = usePokemon();
-const { pokemonList, loading, pokemonSelectedByName } =
+const { pokemonList, loading, pokemonSelectedByName, pokemonListByTypes, pageRef } =
   storeToRefs(pokemonStore);
 const currentPage: Ref<number> = ref(1);
 
@@ -51,6 +54,10 @@ function previous() {
     }
   }
 }
+
+function loadMore(page: number) {
+  pokemonStore.loadMore(page);
+}
 </script>
 
 <template>
@@ -64,13 +71,15 @@ function previous() {
       <div>
         <Start :currentPage="currentPage" :scrollToSection="scrollToSection" />
       </div>
-      <div class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 text-white place-items-start">
-        <div class="w-full">
+      <div
+        class="grid grid-rows-2 lg:grid-rows-1 gap-3 lg:items-center lg:grid-cols-2 text-white place-items-start"
+      >
+        <div class="w-full flex flex-col gap-3 py-2 relative overflow-hidden">
           <h2 class="text-2xl font-semibold">Search by types</h2>
-          <div></div>
+          <Types />
         </div>
 
-        <Search />
+        <Search class="self-end" />
       </div>
     </header>
 
@@ -84,9 +93,21 @@ function previous() {
         :data="pokemonSelectedByName"
       />
 
-      <template v-else-if="pokemonList && !pokemonSelectedByName">
+      <template
+        v-else-if="pokemonList && !pokemonSelectedByName && !pokemonListByTypes"
+      >
         <Card
           v-for="pokemon in pokemonList.results"
+          :key="pokemon.name"
+          :url="pokemon.url"
+        />
+      </template>
+
+      <template
+        v-else-if="pokemonListByTypes && !pokemonSelectedByName && !pokemonList"
+      >
+        <Card
+          v-for="pokemon in pokemonListByTypes"
           :key="pokemon.name"
           :url="pokemon.url"
         />
@@ -96,7 +117,11 @@ function previous() {
         class="text-white h-32 font-bold col-span-2 lg:col-span-3 flex justify-center"
         v-else
       >
-        <h2 class="text-2xl mt-10 animate__animated animate__fadeIn animate__delay-0.5s">Ooops, No data found :(</h2>
+        <h2
+          class="text-2xl mt-10 animate__animated animate__fadeIn animate__delay-0.5s"
+        >
+          Ooops, No data found :(
+        </h2>
       </div>
 
       <div
@@ -201,9 +226,32 @@ function previous() {
           @click="next"
         />
       </div>
+
+      <div
+        class="text-white flex items-center justify-center gap-4 w-full col-span-3"
+        v-if="!loading && pokemonListByTypes"
+      >
+        <button
+          class="py-2 px-4 text-md border-2 border-gray-800/75 rounded-lg bg-gradient-to-t from-[#060a29] to-slate-900/80 flex items-center gap-2 font-semibold"
+          @click="loadMore(pageRef + 1)"
+        >
+          <Plus class="h-7 w-7" color="#FFF" />
+          Show more pokemon
+        </button>
+
+        <a
+          href="#container-cards"
+          class="py-2 px-2 text-md transition-all border-2 border-gray-800/75 rounded-lg bg-gradient-to-t from-[#060a29] to-slate-900/80 flex items-center gap-2 font-semibold"
+        >
+          <ArrowUp color="#FFF" class="h-7 w-7" />
+        </a>
+      </div>
     </div>
 
-    <div class="w-full h-auto flex flex-col md:grid md:grid-cols-2 gap-5 mb-5 lg:grid-cols-3" v-else-if="loading">
+    <div
+      class="w-full h-auto flex flex-col md:grid md:grid-cols-2 gap-5 mb-5 lg:grid-cols-3"
+      v-else-if="loading"
+    >
       <Skeleton v-for="i in 3" :key="i" />
     </div>
   </div>
