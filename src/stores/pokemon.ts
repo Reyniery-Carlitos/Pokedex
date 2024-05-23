@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import Pokemon from "../classes/Pokemon";
 import { Ref, ref } from "vue";
-import { IPokemon, IPokemonList } from "../interfaces/pokemonTypes";
+import { IParamsModal, IPokemon, IPokemonList } from "../interfaces/pokemonTypes";
 
 const usePokemon = defineStore("pokemon", () => {
   const pokemon = new Pokemon();
@@ -10,6 +10,7 @@ const usePokemon = defineStore("pokemon", () => {
   const pokemonList: Ref<IPokemonList | null> = ref(null);
   const loading: Ref<boolean> = ref(false)
   const loadingPokemonId: Ref<boolean> = ref(false)
+  const pokemonStats: Ref<IPokemon | null> = ref(null)
 
 
   async function selectPokemonById(id: number = 1) {
@@ -41,6 +42,15 @@ const usePokemon = defineStore("pokemon", () => {
     }
   }
 
+  async function getStatsPokemon(options: IParamsModal) {
+    const {id, url} = options
+    const pokemon = new Pokemon()
+
+    if (id) pokemonStats.value = await pokemon.getPokemonInfo(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    
+    if (url) pokemonStats.value = await pokemon.getPokemonInfo(url)
+  }
+
   selectPokemonById();
   getPokemonList("https://pokeapi.co/api/v2/pokemon/?limit=9");
 
@@ -52,7 +62,9 @@ const usePokemon = defineStore("pokemon", () => {
     loading,
     selectPokemonByName,
     pokemonSelectedByName,
-    loadingPokemonId
+    loadingPokemonId,
+    getStatsPokemon,
+    pokemonStats
   };
 });
 

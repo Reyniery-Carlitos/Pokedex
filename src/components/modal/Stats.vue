@@ -114,9 +114,9 @@ defineProps<{
           >
             <p class="w-28">{{ options[s.stat.name] }}</p>
             <span class="w-14 font-bold"> {{ s.base_stat }} </span>
-            <div class="w-80 flex h-2 bg-[#545455]">
+            <div class="w-80 flex h-2 rounded-full bg-[#545455]">
               <span
-                class="rounded-r-full h-2"
+                class="rounded-full h-2"
                 :class="s.base_stat < 60 ? 'bg-[#fe374e]' : 'bg-[#1cd90f]'"
                 :style="{ width: `${s.base_stat}%` }"
               >
@@ -164,7 +164,7 @@ defineProps<{
       rgb(255, 255, 255) 100%
     );
     display: block;
-    height: 9rem;
+    height: 8rem;
     width: 2px;
     margin: 0px auto;
   }
@@ -178,7 +178,7 @@ defineProps<{
     );
     display: block;
     width: 2px;
-    height: 9rem;
+    height: 8rem;
   }
 }
 </style>

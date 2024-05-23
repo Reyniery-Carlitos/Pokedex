@@ -6,6 +6,11 @@ export interface IType {
   }
 }
 
+export interface IParamsModal {
+  id?: number,
+  url?: string,
+}
+
 interface IPokemonListResult {
   name: string,
   url: string,

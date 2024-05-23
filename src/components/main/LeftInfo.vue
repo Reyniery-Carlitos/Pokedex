@@ -6,14 +6,18 @@ import { types } from "../../consts/pokeTypes";
 
 import usePokemon from "../../stores/pokemon";
 import { storeToRefs } from "pinia";
-// import useModal from "../../stores/modal";
+import { IParamsModal } from "../../interfaces/pokemonTypes";
+import useModal from "../../stores/modal";
 
 const pokemonStore = usePokemon();
-// const modalStore = useModal()
+const modalStore = useModal()
 const { pokemonSelectedById } = storeToRefs(pokemonStore);
 
-function toggleModal() {
-  // modalStore.toggleModal()
+function toggleModal(options: IParamsModal) {
+  const { id } = options
+  if (id) pokemonStore.getStatsPokemon({id})
+
+  modalStore.toggleModal()
 }
 
 </script>
@@ -45,7 +49,7 @@ function toggleModal() {
       
       <button
         class="details-button flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md"
-        @click="toggleModal"
+        @click="toggleModal({id: pokemonSelectedById.id})"
       >
         <Electric color="#000" />
         More Details
