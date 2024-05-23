@@ -36,13 +36,13 @@ defineProps<{
 
 <template>
   <div
-    class="w-screen h-screen fixed top-0 left-0 flex flex-col items-center justify-center pt-[380px] pb-10 md:pt-20 z-30 text-white bg-black/50 overflow-y-scroll"
+    class="w-screen h-screen fixed top-0 left-0 flex flex-col items-center justify-center pt-[380px] pb-10 md:pt-20 z-20 text-white bg-black/50 overflow-y-scroll"
     v-if="showModal"
   >
     <div
-      class="lg:w-3/5 w-11/12 h-auto grid lg:grid-cols-3 rounded-3xl animate__animated animate__zoomIn z-30 bg-black bg-opacity-50 backdrop-filter backdrop-blur-xl backdrop-saturate-150"
+      class="lg:w-3/5 w-11/12 h-auto grid lg:grid-cols-3 rounded-3xl animate__animated animate__zoomIn bg-black bg-opacity-50 backdrop-filter backdrop-blur-xl backdrop-saturate-150 z-20"
     >
-      <div class="relative flex items-center flex-col h-full md:h-[22rem] rounded-l-3xl pt-5 lg:pt-0">
+      <div class="relative flex items-center flex-col h-full md:h-[22rem] rounded-l-3xl pt-5 lg:pt-0 z-21">
         <img
           :src="data.sprites.other.home.front_default"
           class="pokemon-image h-64 w-64 my-0 mx-auto absolute -top-40 z-20"
@@ -139,7 +139,7 @@ defineProps<{
   );
   display: block;
   height: 2px;
-  width: 12rem;
+  width: 9rem;
   margin: 0px auto;
 }
 
@@ -151,7 +151,7 @@ defineProps<{
     rgba(255, 255, 255, 0) 100%
   );
   display: block;
-  width: 12rem;
+  width: 9rem;
   height: 2px;
 }
 

@@ -48,7 +48,7 @@ function toggleModal(options: IParamsModal) {
       </h1>
       
       <button
-        class="details-button flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md"
+        class="details-button flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md z-10"
         @click="toggleModal({id: pokemonSelectedById.id})"
       >
         <Electric color="#000" />
