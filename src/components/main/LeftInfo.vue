@@ -12,9 +12,9 @@ const { pokemonSelectedById } = storeToRefs(pokemonStore);
 </script>
 
 <template>
-  <div class="w-3/6">
+  <div class="w-full px-5">
     <div
-      class="flex flex-col gap-3 w-4/6 text-justify"
+      class="flex flex-col gap-5 w-full items-center"
       v-if="pokemonSelectedById"
     >
       <span class="text-white font-bold text-2xl">
@@ -32,17 +32,12 @@ const { pokemonSelectedById } = storeToRefs(pokemonStore);
         </button>
       </div>
 
-      <h1 class="text-6xl font-bold text-white uppercase">
+      <h1 class="text-5xl font-bold text-white uppercase">
         {{ pokemonSelectedById.name }}
       </h1>
-      <p class="text-lg text-white">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab eveniet
-        harum tempore exercitationem possimus molestias rerum vel modi, esse id
-        omnis repudiandae enim consequuntur ullam. Necessitatibus dolorum
-        ratione ipsum officiis!
-      </p>
+      
       <button
-        class="flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md"
+        class="details-button flex items-center gap-2 justify-center w-full text-lg font-semibold bg-white p-2 rounded-md"
       >
         <Electric color="#000" />
         More Details

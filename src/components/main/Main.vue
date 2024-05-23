@@ -19,11 +19,11 @@ function selectPokemon(val: number) {
 
 <template>
   <main
-    class="main-container h-[750px] w-full flex flex-col items-center relative overflow-hidden pb-24"
-    v-if="pokemonSelectedById"
-    :style="{'background': `linear-gradient(360deg, ${types[pokemonSelectedById.types[0].type.name].from} 0%, ${types[pokemonSelectedById.types[0].type.name].to} 100%)`}"
+  v-if="pokemonSelectedById"
+  :style="{'background': `linear-gradient(360deg, ${types[pokemonSelectedById.types[0].type.name].from} 0%, ${types[pokemonSelectedById.types[0].type.name].to}`}"
+  class="main-container h-auto w-full flex flex-col items-center relative overflow-hidden pb-12 bg-gradient-to-b from-white to-transparent"
   >
-    <Header class="w-4/6 h-28 flex items-center" />
+    <Header class="w-full lg:w-4/6 p-5 h-28 flex items-center" />
 
     <LeftArrow
       color="#FFF"
@@ -32,7 +32,7 @@ function selectPokemon(val: number) {
       @click="selectPokemon(-1)"
     />
 
-    <div class="w-4/6 h-full">
+    <div class="w-full h-full flex justify-center">
       <Info />
     </div>
 

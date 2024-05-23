@@ -33,8 +33,8 @@ export const types: IType = {
   },
   fire: {
     bg: "#ff9900",
-    from: "#DB6C16",
-    to: "#C2B919",
+    from: "#e24f1b",
+    to: "#ec8328",
   },
   flying: {
     bg: "#89bdff",

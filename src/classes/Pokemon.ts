@@ -61,4 +61,8 @@ export default class Pokemon {
 
     return currentPokemon
   }
+
+  async getTypes() {
+      
+  }
 }

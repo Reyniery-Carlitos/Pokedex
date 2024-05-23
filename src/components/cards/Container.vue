@@ -56,7 +56,7 @@ function previous() {
 <template>
   <div
     id="container-cards"
-    class="w-4/6 flex flex-col items-center gap-10 pt-12"
+    class="w-full xl:w-4/6 px-5 flex flex-col items-center gap-10 pt-12 lg:"
   >
     <header
       class="w-full flex flex-col gap-5 border-b-2 border-b-gray-200/20 pb-5"
@@ -64,8 +64,8 @@ function previous() {
       <div>
         <Start :currentPage="currentPage" :scrollToSection="scrollToSection" />
       </div>
-      <div class="grid grid-cols-2 text-white place-items-center">
-        <div>
+      <div class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 text-white place-items-start">
+        <div class="w-full">
           <h2 class="text-2xl font-semibold">Search by types</h2>
           <div></div>
         </div>
@@ -75,7 +75,7 @@ function previous() {
     </header>
 
     <div
-      class="w-full h-auto grid grid-cols-3 gap-8 self-center animate__animated animate__fadeIn animate__delay-0.5s"
+      class="w-full h-auto flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 animate__animated animate__fadeIn animate__delay-0.5s"
       v-if="!loading"
     >
       <Card
@@ -93,14 +93,14 @@ function previous() {
       </template>
 
       <div
-        class="text-white h-32 font-bold col-span-4 flex justify-center"
+        class="text-white h-32 font-bold col-span-2 lg:col-span-3 flex justify-center"
         v-else
       >
         <h2 class="text-2xl mt-10 animate__animated animate__fadeIn animate__delay-0.5s">Ooops, No data found :(</h2>
       </div>
 
       <div
-        class="flex gap-5 items-center mb-10 col-span-3 justify-center animate__animated animate__fadeIn animate__delay-0.5s"
+        class="flex gap-5 items-center mb-10 col-span-2 lg:col-span-3 justify-center animate__animated animate__fadeIn animate__delay-0.5s"
         v-if="pokemonList"
       >
         <LeftArrow
@@ -203,7 +203,7 @@ function previous() {
       </div>
     </div>
 
-    <div class="w-full h-auto grid grid-cols-3 gap-8 self-center mb-5" v-else-if="loading">
+    <div class="w-full h-auto flex flex-col md:grid md:grid-cols-2 gap-5 mb-5 lg:grid-cols-3" v-else-if="loading">
       <Skeleton v-for="i in 3" :key="i" />
     </div>
   </div>

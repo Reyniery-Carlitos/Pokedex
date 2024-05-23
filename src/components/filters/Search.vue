@@ -15,11 +15,11 @@ function search (name: string) {
 </script>
 
 <template>
-  <form class="search flex h-14 w-4/6 rounded-lg" @submit.prevent="search(name)">
+  <form class="search flex h-14 w-full rounded-lg" @submit.prevent="search(name)">
     <input
       v-model="name"
       type="text"
-      class="border-2 w-11/12 bg-transparent py-1 pl-3 rounded-l-lg outline-none border-[#2f5bfe] text-white"
+      class="border-2 w-full bg-transparent py-1 pl-3 rounded-l-lg outline-none border-[#2f5bfe] text-white"
       placeholder="Search Pokemon"
     />
     <button class="flex bg-[#2f5bfe] rounded-r-lg items-center h-14 w-14">

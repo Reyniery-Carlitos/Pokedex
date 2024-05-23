@@ -7,7 +7,7 @@ const { pokemonSelectedById } = storeToRefs(pokemonStore);
 </script>
 
 <template>
-  <div class="flex w-3/6 items-center justify-center">
+  <div class="flex w-full px-5 items-center justify-center">
     <img
       v-if="pokemonSelectedById"
       class=""
